@@ -1,12 +1,8 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying a page
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * adapted from theme Twenty_Twenty_One
  */
 
 get_header();
