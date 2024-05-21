@@ -14,14 +14,16 @@ header_menu_contact.onclick = function() {
 // Get the button on single custom post that opens the modal
 var single_photo_contact = document.getElementById("single_photo_contact");
 
-// When the user clicks on the button contact, open the modal
-single_photo_contact.onclick = function() {
-    overlay.style.display = "flex";
-    // jquery code : transfert value of reference from single custom post to contact modal
-    jQuery( document ).ready( function($) {
-          $reference = $("#single_photo_reference").text();
-          $("#contact_popup_ref").val($reference);
-      });
+if (single_photo_contact) { // single photo page loaded
+    // When the user clicks on the button contact, open the modal
+    single_photo_contact.onclick = function() {
+        overlay.style.display = "flex";
+        // jquery code : transfert value of reference from single custom post to contact modal
+        jQuery( document ).ready( function($) {
+            $reference = $("#single_photo_reference").text();
+            $("#contact_popup_ref").val($reference);
+        });
+    }
 }
 
 // When the user clicks anywhere outside of the modal, close it

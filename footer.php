@@ -31,7 +31,7 @@
 
 	</footer>
 	
-	<?php get_template_part('/template-parts/contact', 'modal'); /* contact modal */ ?>
+	<?php get_template_part('/template-parts/contact-modal'); /* contact modal */ ?>
 
 	<?php wp_footer(); ?>
 

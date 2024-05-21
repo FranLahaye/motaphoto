@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
+ * template for displaying each customized single photo
  *
  */
 
@@ -88,9 +88,52 @@ get_header();
 			</div> <!-- single_photo_navbar -->
 		</section> <!-- zone container -->
 
-		<section>
-        <?php get_template_part('assets/templates_parts/photo-block'); ?>
-		</section> <!-- zone container -->
+		<section class="related_container">
+			<h2 class="related_photo_title">VOUS AIMEREZ AUSSI</h2>
+
+			<div class="related_2photos"> 
+				<?php
+				
+				// Collect current taxonomy "categorie" of single post page
+				$category = get_the_terms(get_the_ID(), 'categorie');
+				$category_slug = $category[0]->slug;
+
+				// request build to get 2 photos of the same taxonomy
+				$related_args = array(
+					'post_type'      => 'fiche_photo',
+					'posts_per_page' => 2,
+					'orderby'   => 'date',
+					'order'   => 'ASC',
+					'tax_query' => [
+						[
+							'taxonomy' => 'categorie',
+							'field' => 'slug',
+							'terms' => $category_slug,
+						],
+					], // same taxonomy
+					'post__not_in'   => array( get_the_ID() ), // exclude current single photo
+				);
+
+				$related_query = new WP_Query($related_args);
+	
+				// Afficher les photos
+				if ( $related_query->have_posts() ) {
+					while ( $related_query->have_posts() ) {
+						$related_query->the_post();
+	
+						get_template_part('/template-parts/photo-block'); // one photo block build
+				
+					}
+				}
+
+				// Reset this request to return to global post loop
+				wp_reset_postdata();
+				
+				?>
+
+			</div> <!-- related_2photos -->
+
+		</section> <!-- related_container -->
 
 		
 	<?php endwhile; // End of the loop

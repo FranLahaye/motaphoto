@@ -19,10 +19,13 @@ $description = get_the_archive_description();
 		<?php endif; ?>
 	</header><!-- .page-header -->
 
-	<?php while ( have_posts() ) : ?>
-		<?php the_post(); ?>
-		<?php get_template_part( 'template-parts/content/content', get_theme_mod( 'display_excerpt_or_full_post', 'excerpt' ) ); ?>
-	<?php endwhile; ?>
+	<ul>
+    <?php while (have_posts()) : the_post(); ?>
+      <a href="<?php the_permalink() ?>">
+        <li><?php the_title() ?></li>
+      </a>
+    <?php endwhile ?>
+  	</ul>
 
 	<?php the_posts_pagination(); ?>
 
