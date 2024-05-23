@@ -21,18 +21,18 @@ get_header();
 				<div class="single_photo_left_container"><!-- left container -->
 					<!-- text for photo -->
 					<div class="single_photo_card">
-						<h1 class="single_photo_title"><?php the_title(); ?></h1>
+						<h2 class="single_photo_title"><?php the_title(); ?></h2>
 
 						<?php $current_reference = get_post_meta(get_the_ID(), 'reference', true); ?>
 						<?php $current_categorie = get_the_terms(get_the_ID(), 'categorie'); ?>
 						<?php $current_type = get_post_meta(get_the_ID(), 'type_photo', true); ?>
 						<?php $current_format = get_the_terms(get_the_ID(), 'format'); ?>
 
-						<h2 class="single_photo_text">Référence : <span id="single_photo_reference"><?php echo $current_reference ?> </span></h2>
-						<h2 class="single_photo_text">Catégorie : <?php echo $current_categorie[0]->name ?> </h2>
-						<h2 class="single_photo_text">Format : <?php echo $current_format[0]->name ?> </h2>
-						<h2 class="single_photo_text">Type : <?php echo $current_type ?> </h2>
-						<h2 class="single_photo_text">Année : <?php the_time("Y"); ?> </h2>
+						<p class="single_photo_text photo_description">Référence : <span id="single_photo_reference"><?php echo $current_reference ?> </span></p>
+						<p class="single_photo_text photo_description">Catégorie : <?php echo $current_categorie[0]->name ?> </p>
+						<p class="single_photo_text photo_description">Format : <?php echo $current_format[0]->name ?> </p>
+						<p class="single_photo_text photo_description">Type : <?php echo $current_type ?> </p>
+						<p class="single_photo_text photo_description">Année : <?php the_time("Y"); ?> </p>
 					</div>
 				</div> <!-- left container -->
 
@@ -43,9 +43,9 @@ get_header();
 
 			<!-- navigation bar -->
 			<div class="single_photo_navbar">
-				<h2 class="single_photo_question">Cette photo vous intéresse ?</h2>
+				<p>Cette photo vous intéresse ?</p>
 				<!-- Button to launch contact popup -->
-				<button id="single_photo_contact">Contact</button>
+				<button id="single_photo_contact" class="CTAbutton">Contact</button>
 
 				<div class="single_photo_direction_container">
 
@@ -89,7 +89,7 @@ get_header();
 		</section> <!-- zone container -->
 
 		<section class="related_container">
-			<h2 class="related_photo_title">VOUS AIMEREZ AUSSI</h2>
+			<h3 class="related_photo_title">VOUS AIMEREZ AUSSI</h3>
 
 			<div class="related_2photos"> 
 				<?php

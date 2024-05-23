@@ -3,13 +3,15 @@
 // Get the overlay containing the modal
 var overlay = document.getElementById('contact-modal');
 
-// Get the header menu item that opens the modal
-var header_menu_contact = document.getElementById("menu-item-26");
+// Get the header menu items that opens the modal (menus desktop and mobile)
+var header_menu_contact = document.querySelectorAll(".menu-item-26");
 
 // When the user clicks on the header menu item, open the modal
-header_menu_contact.onclick = function() {
+header_menu_contact.forEach(link => {
+    link.onclick = function() {
     overlay.style.display = "flex";
-}
+    }
+});
 
 // Get the button on single custom post that opens the modal
 var single_photo_contact = document.getElementById("single_photo_contact");

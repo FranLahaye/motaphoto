@@ -21,8 +21,8 @@ $description = get_the_archive_description();
 
 	<ul>
     <?php while (have_posts()) : the_post(); ?>
-      <a href="<?php the_permalink() ?>">
-        <li><?php the_title() ?></li>
+      <a href="<?php the_permalink(); ?>">
+        <li><?php the_title(); echo "<span> - </span>"; the_time("j F Y"); ?></li>
       </a>
     <?php endwhile ?>
   	</ul>

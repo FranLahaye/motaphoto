@@ -1,6 +1,6 @@
 <?php
 /**
-* template for blog
+* template for home page motaphoto
  */
 
 get_header(); ?>

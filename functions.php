@@ -20,10 +20,12 @@ add_action( 'after_setup_theme', 'register_menus' );
 
 // Java scripts declaration
 function theme_enqueue_scripts() {
+		// contact modal
+		wp_enqueue_script( 'burger-menu-script', get_stylesheet_directory_uri() . '/assets/js/burger-menu.js', array(), '1.0', true );
         // contact modal
        wp_enqueue_script( 'contact-modal-script', get_stylesheet_directory_uri() . '/assets/js/contact-modal.js', array(), '1.0', true );
         // single custom type page
-		wp_enqueue_script( 'single-cpt-script', get_stylesheet_directory_uri() . '/assets/js/single_fiche_photo.js', array('jquery'), '1.0', true );
+		wp_enqueue_script( 'single-cpt-script', get_stylesheet_directory_uri() . '/assets/js/single-fiche-photo.js', array('jquery'), '1.0', true );
  
    }
    add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );

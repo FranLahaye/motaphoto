@@ -21,36 +21,53 @@
     
     <?php wp_body_open(); ?>
 
-	<header class="header_bar">
+	<header>
+		<div class="header_bar">
 
-		<a href="<?php echo home_url( '/' ); ?>">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_Nathalie_Mota.png" alt="Logo">
-		</a>
+			<a href="<?php echo home_url( '/' ); ?>">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_Nathalie_Mota.png" alt="Logo" class="sitelogo">
+			</a>
 
-		<?php if ( has_nav_menu( 'header-menu' ) ) : ?>
-			<nav class="navigation_bar">
-				<!--<div class="menu-button-container">
-					<button id="primary-mobile-menu" class="button">
-						<span class="dropdown-icon open">
-						</span>
-						<span class="dropdown-icon close">
-						</span>
-					</button> --><!-- #primary-mobile-menu -->
-				<!-- </div>--><!-- .menu-button-container -->
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location'  => 'header-menu',
-						'container' => false,
-						'menu_class' => 'header_menu',
-					)
-				);
-				?>
-			</nav>
-		<?php
-		endif;?>
+			<?php if ( has_nav_menu( 'header-menu' ) ) : ?>
+				<nav class="navigation_bar menu_desktop"> <!-- menu navbar for desktop -->
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'header-menu',
+							'container' => false,
+							'menu_class' => 'header_menu',
+						)
+					);
+					?>
+				</nav>
+			<?php
+			endif;?>
+
+			<!-- burger icon -->
+			<img class="burger_icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/burger.png" alt="burger logo">
+			<img class="cross_icon" src="<?php echo get_template_directory_uri(); ?>/assets/img/cross.png" alt="cross logo">
+
+		</div> <!-- header_bar -->
+
+		<div class="menu_mobile"> <!-- menu page for mobile -->
+			<?php if ( has_nav_menu( 'header-menu' ) ) : ?>
+				<nav>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'header-menu',
+							'container' => false,
+							'menu_class' => 'burger_menu',
+						)
+					);
+					?>
+				</nav>
+			<?php
+			endif;?>
+		</div> <!-- "menu_burger -->
 
 	</header>
+
 
 	<div id="content" class="site-content">
 		<div id="primary" class="content-area">

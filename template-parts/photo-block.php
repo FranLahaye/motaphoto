@@ -26,7 +26,7 @@
             $category = get_the_terms(get_the_ID(), 'categorie');
             // if exist
             if ($category && !is_wp_error($category)) {
-                echo '<p class="block_infos_category">'. $category[0]->name . '</p>';
+                echo '<p class="block_infos_category photo_description">'. $category[0]->name . '</p>';
             }
         ?>
 
