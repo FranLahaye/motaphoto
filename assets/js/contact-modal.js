@@ -1,10 +1,10 @@
 /* script to manage contact modal interaction */
 
 // Get the overlay containing the modal
-var overlay = document.getElementById('contact-modal');
+const overlay = document.getElementById('contact-modal');
 
 // Get the header menu items that opens the modal (menus desktop and mobile)
-var header_menu_contact = document.querySelectorAll(".menu-item-26");
+const header_menu_contact = document.querySelectorAll(".menu-item-26");
 
 // When the user clicks on the header menu item, open the modal
 header_menu_contact.forEach(link => {
