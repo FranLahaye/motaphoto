@@ -805,3 +805,27 @@ h3 {
         -webkit-text-stroke: 0.55px var(--main-bg-color);
     }
 }
+
+/* GALLERY */
+.gallery {
+    padding: 80px 146px 0 146px;
+}
+.gallery_filters {
+    padding-bottom: 40px;
+}
+.gallery_photos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.gallery_load_more {
+    display: flex;
+    justify-content: center;
+}
+.gallery_load_more_button {
+	margin: 40px 0 40px 0;
+	width: 272px;
+    height: 54px;
+}

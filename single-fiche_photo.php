@@ -116,7 +116,7 @@ get_header();
 
 				$related_query = new WP_Query($related_args);
 	
-				// Afficher les photos
+				// display photos
 				if ( $related_query->have_posts() ) {
 					while ( $related_query->have_posts() ) {
 						$related_query->the_post();
