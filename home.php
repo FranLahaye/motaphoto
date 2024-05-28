@@ -51,13 +51,13 @@ get_header(); ?>
 					'posts_per_page' => 8,
 					'orderby'   => 'date',
 					'order'   => $date_order,
-					'tax_query' => [
+	/*				'tax_query' => [
 						[
 							'taxonomy' => 'categorie',
 							'field' => 'slug',
 							'terms' => $category_slug,
 						],
-					], // taxonomies
+					], // taxonomies*/
 			
 				);
 
@@ -73,7 +73,7 @@ get_header(); ?>
 					}
 				}
 
-				// No wp_reset_postdata because it is the global post loop of this page
+				// close current WP loop
 				wp_reset_postdata();
 				
 				?>

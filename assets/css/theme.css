@@ -819,13 +819,14 @@ h3 {
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 .gallery_load_more {
     display: flex;
     justify-content: center;
 }
 .gallery_load_more_button {
-	margin: 40px 0 40px 0;
+	margin: 0 0 40px 0;
 	width: 272px;
     height: 54px;
 }
