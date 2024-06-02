@@ -38,10 +38,52 @@ get_header(); ?>
 
 	<section class="gallery">
 		<div class="gallery_filters">
+
+			<div id="gallery_filter_categorie">
+				<button class="gallery_filter">CATÉGORIES</button>
+				<ul class="gallery_filter_dropdown">
+					<li class="gallery_filter_option" data-value=""></li>
+					<?php
+					
+						$categories = get_categories(array('taxonomy' => 'categorie', 'hide_empty' => false));
+						foreach ($categories as $category) {
+							echo '<li class="gallery_filter_option" data-value="' . esc_attr($category->slug) . '">' . esc_html($category->name) . '</li>';
+						}
+					?>				
+				</ul>
+			</div>
+					
+			<div id="gallery_filter_format">
+				<button class="gallery_filter">FORMATS</button>
+				<ul class="gallery_filter_dropdown">
+					<li class="gallery_filter_option" data-value=""></li>
+					<?php
+						$formats = get_categories(array('taxonomy' => 'format', 'hide_empty' => false));
+						foreach ($formats as $format) {
+							echo '<li class="gallery_filter_option" data-value="' . esc_attr($format->slug) . '">' . esc_html($format->name) . '</li>';
+						}
+					?>				
+				</ul>
+			</div>
+
+			<div id="gallery_filter_sort">
+				<button class="gallery_filter">TRIER PAR</button>
+				<ul class="gallery_filter_dropdown">
+					<li class="gallery_filter_option" data-value=""></li>
+					<li class="gallery_filter_option" data-value="ASC">à partir des plus anciennes</li>
+					<li class="gallery_filter_option" data-value="DESC">à partir des plus récentes</li>					
+				</ul>
+			</div>
+
 		</div><!-- gallery_filters -->
+		
+<section class="filters">
+
+</section>
 
 		<div class="gallery_photos">
 		<?php
+		/*
 				$category_slug = 'mariage';
 				$date_order = 'ASC';
 
@@ -51,13 +93,13 @@ get_header(); ?>
 					'posts_per_page' => 8,
 					'orderby'   => 'date',
 					'order'   => $date_order,
-	/*				'tax_query' => [
+					'tax_query' => [
 						[
 							'taxonomy' => 'categorie',
 							'field' => 'slug',
 							'terms' => $category_slug,
 						],
-					], // taxonomies*/
+					], 
 			
 				);
 
@@ -75,7 +117,7 @@ get_header(); ?>
 
 				// close current WP loop
 				wp_reset_postdata();
-				
+				*/
 				?>
 
 		</div><!-- gallery_photos -->

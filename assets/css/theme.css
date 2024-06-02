@@ -95,6 +95,7 @@ a {
 ul {
     padding: 0;
     margin: 0;
+    list-style: none;
 }
 
 p {
@@ -443,7 +444,7 @@ h3 {
     font-family: Poppins;
     font-size: 12px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 500;var(--filter-border)
     line-height: normal;
     border-radius: 8px;
     border: 1px solid var(--filter-border);
@@ -810,9 +811,7 @@ h3 {
 .gallery {
     padding: 80px 146px 0 146px;
 }
-.gallery_filters {
-    padding-bottom: 40px;
-}
+
 .gallery_photos {
     display: flex;
     flex-direction: row;
@@ -829,4 +828,91 @@ h3 {
 	margin: 0 0 40px 0;
 	width: 272px;
     height: 54px;
+}
+
+/* FILTERS */
+.gallery_filters {
+    padding-bottom: 40px;
+    display: grid;
+    grid-template-columns: 296px repeat(3, 1fr);
+}
+.gallery_filter {
+    display: flex;
+    width: 260px;
+    height: 42px;
+    padding: 11px 18px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+    border: 1.3px solid var(--filter-border);
+    color: var(--filter-color);
+    background-color: var(--main-bg-color);
+    position: relative;
+}
+
+button.gallery_filter {
+    cursor: pointer;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.36px;
+    text-transform: uppercase;
+    background: url("../img/chevron-down-s.png") 93% 50% no-repeat;
+}
+
+button.gallery_filter_focus {
+    background: url("../img/chevron-up-s.png") 93% 50% no-repeat;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 1.3px solid var(--filter-cta);
+}
+
+.gallery_filter_dropdown {
+    display: none;
+    position: absolute;
+    background-color: var(--main-bg-color);
+    z-index: 1;
+    width: 260px;
+    border-radius: 0px 0px 8px 8px;
+    border: 1.3px solid var(--filter-border);
+}
+
+.gallery_filter_option {
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.36px;
+    padding: 11px 24px;
+    cursor: pointer;
+    display: block;
+    height: 18px;   
+}
+
+.gallery_filter_option:last-child {
+    border-radius: 0px 0px 8px 8px;
+}
+.gallery_filter_option:hover {
+    background-color: var(--filter-bg-hover);
+}
+.gallery_filter_option:focus {
+    background-color: var(--filter-bg-selected);
+}
+
+
+#gallery_filter_categorie {
+
+}
+
+#gallery_filter_format {
+
+}
+
+#gallery_filter_sort {
+    grid-column: 4;
+    justify-self: end;
 }

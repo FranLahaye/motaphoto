@@ -1,40 +1,49 @@
-jQuery(document).ready(function($) {
-    var pagenb = 2; // at first request the page 2 because page 1 is loaded by default with home page
-    const posts_per_page = 8;
+/* script based on jquery to manage ajax request to load more photos on button click */
 
-    // function called by button click
-    function Load_More_Photos() {
-        var data = {
-            action: 'load_more_photos',
-            page: pagenb,
-            post_nb: posts_per_page,
-         };
+/* check script is loaded */
+document.addEventListener('DOMContentLoaded', function() {
 
-        // Ajax request using jquery method
-        $.ajax({
-            url: gallery_load_more_JS.ajax_url,
-            type: 'POST',
-            data: data,
-            async: true,
-            success: function(response) {
-                // insert new photos into gallery
-                $('.gallery_photos').append(response);
-                pagenb++;
+    jQuery(document).ready(function($) {
+        const posts_per_page = 8;
+        
+        // function called by button click
+        function Load_More_Photos() {
+            var data = {
+                action: 'load_photos',
+                page: pagenb,
+                post_nb: posts_per_page,
+                category: category_value,
+                format: format_value,
+                order: dateOrder_value,
+            };
+            console.log(data);
 
-                // check if more photos
-                if ($(response).filter('.photo_block').length < posts_per_page) {
-                    // hide button
-                    $('.gallery_load_more_button').hide();
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error("AJAX error: ", status, error);
-            },
-         });
-    }
-    // on button click
-    $('.gallery_load_more_button').on('click', function() {
-        Load_More_Photos();
-    });
-  
-});
+            // Ajax request using jquery method
+            $.ajax({
+                url: gallery_filters_JS.ajax_url,
+                type: 'POST',
+                data: data,
+                async: true,
+                success: function(response) {
+                    // insert new photos into gallery
+                    $('.gallery_photos').append(response);
+                    pagenb++;
+
+                    // check if more photos
+                    if ($(response).filter('.photo_block').length < posts_per_page) {
+                        // hide button
+                        $('.gallery_load_more_button').hide();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX error: ", status, error);
+                },
+            });
+        }
+        // on button click
+        $('.gallery_load_more_button').on('click', function() {
+            Load_More_Photos();
+        });
+    
+    }); // jquery loaded
+}); // end check script loaded 
