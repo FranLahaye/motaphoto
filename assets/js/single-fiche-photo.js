@@ -32,3 +32,5 @@ function hide_arrow_right() {
     next_div.style.transition = 'opacity 1s ease-in-out';
     next_div.style.opacity = '0';
 }
+
+

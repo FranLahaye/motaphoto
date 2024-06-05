@@ -33,6 +33,8 @@
 	
 	<?php get_template_part('/template-parts/contact-modal'); /* contact modal */ ?>
 
+	<?php get_template_part('/template-parts/lightbox'); /* photo lightbox modal */ ?>
+
 	<?php wp_footer(); ?>
 
 </body>

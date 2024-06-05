@@ -10,12 +10,13 @@
     <a href=" <?php the_permalink(); ?>" >
     <?php echo get_the_post_thumbnail(get_the_ID(), 'medium','class=block_img'); ?>
     </a>
-    <!-- overlay -->
 
+    <!-- overlay -->
     <div class="block_overlay">
 
         <!-- fullsize icon -->
-        <img class="block_icon_full" src="<?php echo get_stylesheet_directory_uri() . '/assets/img/Icon_fullscreen.png';?>" alt='pour afficher dans la lightbox' photo-reference="<?php echo get_post_meta(get_the_ID(), 'reference', true); ?>" >
+        <img class="block_icon_full" src="<?php echo get_stylesheet_directory_uri() . '/assets/img/Icon_fullscreen.png';?>"
+         alt='pour afficher dans la lightbox' data-fullphoto-url="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" >
 
         <!--single link icon -->
         <a href=" <?php the_permalink(); ?>" >

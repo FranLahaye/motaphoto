@@ -15,104 +15,134 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* categorie filter built with ul */
     var categorie_filter = document.getElementById('gallery_filter_categorie');
-    var categorie_button = categorie_filter.querySelector('button.gallery_filter');
-    var categorie_dropdown = categorie_filter.querySelector('.gallery_filter_dropdown');
-    var categorie_options = Array.from(categorie_filter.querySelectorAll('.gallery_filter_option'));
 
-    /* categorie dropdown */
-    categorie_button.addEventListener('focus', () => {
-        categorie_dropdown.style.display = 'block';
-        categorie_button.classList.add("gallery_filter_focus");
-    });
+    if (categorie_filter) {
+        var categorie_button = categorie_filter.querySelector('button.gallery_filter');
+        var categorie_dropdown = categorie_filter.querySelector('.gallery_filter_dropdown');
+        var categorie_options = Array.from(categorie_filter.querySelectorAll('.gallery_filter_option'));
+        
 
-    /* categorie filter result */
-    categorie_options.forEach(option => {
+        /* categorie dropdown */
+        categorie_button.addEventListener('focus', () => {
+            categorie_dropdown.style.display = 'block';
+            categorie_button.classList.add("gallery_filter_focus");
 
-        // click on an option
-        option.addEventListener('click', () => {
-            //display option selected
-            if (option.textContent != "")
-                categorie_button.textContent = option.textContent;
-            else
-                categorie_button.textContent = "CATÉGORIES";
-
-            // set data-value of option selected into filter centralized value
-            var selectedValue = option.getAttribute('data-value');
-            categorie_filter.setAttribute('data-value', selectedValue);
-
-            // categorie dropup
-            categorie_dropdown.style.display = 'none';
-            categorie_button.classList.remove("gallery_filter_focus");
-        });
-    });
-
-
-    /* format filter built with ul */
-    var format_filter = document.getElementById('gallery_filter_format');
-    var format_button = format_filter.querySelector('button.gallery_filter');
-    var format_dropdown = format_filter.querySelector('.gallery_filter_dropdown');
-    var format_options = Array.from(format_filter.querySelectorAll('.gallery_filter_option'));
-
-    /* format dropdown */
-    format_button.addEventListener('focus', () => {
-        format_dropdown.style.display = 'block';
-        format_button.classList.add("gallery_filter_focus");
-    });
-
-    /* format filter result */
-    format_options.forEach(option => {
-
-        // click on an option
-        option.addEventListener('click', () => {
-            //display option selected
-            if (option.textContent != "")
-                format_button.textContent = option.textContent;
-            else
-                format_button.textContent = "FORMATS";
-
-            // set data-value of option selected into filter centralized value
-            var selectedValue = option.getAttribute('data-value');
-            format_filter.setAttribute('data-value', selectedValue);
-
-            // format dropup
+            // format dropdown close
             format_dropdown.style.display = 'none';
             format_button.classList.remove("gallery_filter_focus");
-        });
-    });
-
-
-    /* sort filter built with ul */
-    var sort_filter = document.getElementById('gallery_filter_sort');
-    var sort_button = sort_filter.querySelector('button.gallery_filter');
-    var sort_dropdown = sort_filter.querySelector('.gallery_filter_dropdown');
-    var sort_options = Array.from(sort_filter.querySelectorAll('.gallery_filter_option'));
-
-    /* sort dropdown */
-    sort_button.addEventListener('focus', () => {
-        sort_dropdown.style.display = 'block';
-        sort_button.classList.add("gallery_filter_focus");
-    });
-
-    /* sort filter result */
-    sort_options.forEach(option => {
-
-        // click on an option
-        option.addEventListener('click', () => {
-            //display option selected
-            if (option.textContent != "")
-                sort_button.textContent = option.textContent;
-            else
-                sort_button.textContent = "TRIER PAR";
-
-            // set data-value of option selected into filter centralized value
-            var selectedValue = option.getAttribute('data-value');
-            sort_filter.setAttribute('data-value', selectedValue);
-
-            // sort dropup
+            // sort dropdown close
             sort_dropdown.style.display = 'none';
             sort_button.classList.remove("gallery_filter_focus");
         });
-    });
+
+        /* categorie filter result */
+        categorie_options.forEach(option => {
+
+            // click on an option
+            option.addEventListener('click', () => {
+                //display option selected
+                if (option.textContent != "")
+                    categorie_button.textContent = option.textContent;
+                else
+                    categorie_button.textContent = "CATÉGORIES";
+
+                // set data-value of option selected into filter centralized value
+                var selectedValue = option.getAttribute('data-value');
+                categorie_filter.setAttribute('data-value', selectedValue);
+
+                // categorie dropdown close
+                categorie_dropdown.style.display = 'none';
+                categorie_button.classList.remove("gallery_filter_focus");
+            });
+        });
+    } //end categorie_filter
+
+    /* format filter built with ul */
+    var format_filter = document.getElementById('gallery_filter_format');
+
+    if (format_filter) {
+        var format_button = format_filter.querySelector('button.gallery_filter');
+        var format_dropdown = format_filter.querySelector('.gallery_filter_dropdown');
+        var format_options = Array.from(format_filter.querySelectorAll('.gallery_filter_option'));
+
+        /* format dropdown */
+        format_button.addEventListener('focus', () => {
+            format_dropdown.style.display = 'block';
+            format_button.classList.add("gallery_filter_focus");
+            
+            // categorie dropdown close
+            categorie_dropdown.style.display = 'none';
+            categorie_button.classList.remove("gallery_filter_focus");
+            // sort dropdown close
+            sort_dropdown.style.display = 'none';
+            sort_button.classList.remove("gallery_filter_focus");
+        });
+
+        /* format filter result */
+        format_options.forEach(option => {
+
+            // click on an option
+            option.addEventListener('click', () => {
+                //display option selected
+                if (option.textContent != "")
+                    format_button.textContent = option.textContent;
+                else
+                    format_button.textContent = "FORMATS";
+
+                // set data-value of option selected into filter centralized value
+                var selectedValue = option.getAttribute('data-value');
+                format_filter.setAttribute('data-value', selectedValue);
+
+                // format dropdown close
+                format_dropdown.style.display = 'none';
+                format_button.classList.remove("gallery_filter_focus");
+
+            });
+        });
+    } //end format_filter
+
+    /* sort filter built with ul */
+    var sort_filter = document.getElementById('gallery_filter_sort');
+
+    if (sort_filter) {
+        var sort_button = sort_filter.querySelector('button.gallery_filter');
+        var sort_dropdown = sort_filter.querySelector('.gallery_filter_dropdown');
+        var sort_options = Array.from(sort_filter.querySelectorAll('.gallery_filter_option'));
+
+        /* sort dropdown */
+        sort_button.addEventListener('focus', () => {
+            sort_dropdown.style.display = 'block';
+            sort_button.classList.add("gallery_filter_focus");
+
+            // categorie dropdown close
+            categorie_dropdown.style.display = 'none';
+            categorie_button.classList.remove("gallery_filter_focus");
+            // format dropdown close
+            format_dropdown.style.display = 'none';
+            format_button.classList.remove("gallery_filter_focus");
+        });
+
+        /* sort filter result */
+        sort_options.forEach(option => {
+
+            // click on an option
+            option.addEventListener('click', () => {
+                //display option selected
+                if (option.textContent != "")
+                    sort_button.textContent = option.textContent;
+                else
+                    sort_button.textContent = "TRIER PAR";
+
+                // set data-value of option selected into filter centralized value
+                var selectedValue = option.getAttribute('data-value');
+                sort_filter.setAttribute('data-value', selectedValue);
+
+                // sort dropdown close
+                sort_dropdown.style.display = 'none';
+                sort_button.classList.remove("gallery_filter_focus");
+            });
+        });
+    } //end sort_filter
 
     /* initial load without filters */
     gallery_ajax_request();
@@ -165,7 +195,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 format: format_value,
                 order: dateOrder_value,
             };
-            console.log(data);
+
+            /* check ajax request data
+            console.log(data);*/
 
             // Ajax request using jquery method
             $.ajax({
@@ -177,6 +209,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // insert new photos into gallery
                     $('.gallery_photos').html(response);
                     pagenb++;
+
+                    open_lightbox(); // update lightbox context accordingly with current photos present
 
                     // check if more photos
                     if ($(response).filter('.photo_block').length < posts_per_page) {

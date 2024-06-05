@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 format: format_value,
                 order: dateOrder_value,
             };
-            console.log(data);
 
             // Ajax request using jquery method
             $.ajax({
@@ -28,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // insert new photos into gallery
                     $('.gallery_photos').append(response);
                     pagenb++;
+                    
+                    open_lightbox(); // update lightbox context accordingly with current photos present
 
                     // check if more photos
                     if ($(response).filter('.photo_block').length < posts_per_page) {

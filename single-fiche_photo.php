@@ -115,9 +115,10 @@ get_header();
 				);
 
 				$related_query = new WP_Query($related_args);
-	
+
 				// display photos
 				if ( $related_query->have_posts() ) {
+
 					while ( $related_query->have_posts() ) {
 						$related_query->the_post();
 	
@@ -128,7 +129,6 @@ get_header();
 
 				// Reset this request to return to global post loop
 				wp_reset_postdata();
-				
 				?>
 
 			</div> <!-- related_2photos -->

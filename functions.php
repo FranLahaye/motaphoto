@@ -24,14 +24,25 @@ function theme_enqueue_scripts() {
 		wp_enqueue_script( 'burger-menu-script', get_stylesheet_directory_uri() . '/assets/js/burger-menu.js', array(), '1.0', true );
         // contact modal
        	wp_enqueue_script( 'contact-modal-script', get_stylesheet_directory_uri() . '/assets/js/contact-modal.js', array(), '1.0', true );
-        // single custom type page
-		wp_enqueue_script( 'single-cpt-script', get_stylesheet_directory_uri() . '/assets/js/single-fiche-photo.js', array('jquery'), '1.0', true );
-		// gallery filters
-		wp_enqueue_script( 'gallery-filters', get_stylesheet_directory_uri() . '/assets/js/gallery-filters.js', array('jquery'), '1.0', true );
-		wp_localize_script('gallery-filters', 'gallery_filters_JS', array('ajax_url' => admin_url('admin-ajax.php')));
-		// gallery load more
-		wp_enqueue_script( 'gallery-load-more-script', get_stylesheet_directory_uri() . '/assets/js/gallery-load-more.js', array('jquery','gallery-filters'), '1.0', true );
-		wp_localize_script('gallery-load-more-script', 'gallery_load_more_JS', array('ajax_url' => admin_url('admin-ajax.php')));
+		
+		if (is_home() or is_singular('fiche_photo')) {
+			// lightbox modal
+			wp_enqueue_script( 'lightbox-script', get_stylesheet_directory_uri() . '/assets/js/lightbox.js', array(), '1.0', true );
+		}
+
+		if (is_singular('fiche_photo')) {
+			// single custom type page
+			wp_enqueue_script( 'single-cpt-script', get_stylesheet_directory_uri() . '/assets/js/single-fiche-photo.js', array('jquery','lightbox-script'), '1.0', true );
+		}
+
+		if (is_home()) {
+			// gallery filters
+			wp_enqueue_script( 'gallery-filters-script', get_stylesheet_directory_uri() . '/assets/js/gallery-filters.js', array('jquery','lightbox-script'), '1.0', true );
+			wp_localize_script('gallery-filters-script', 'gallery_filters_JS', array('ajax_url' => admin_url('admin-ajax.php')));
+			// gallery load more
+			wp_enqueue_script( 'gallery-load-more-script', get_stylesheet_directory_uri() . '/assets/js/gallery-load-more.js', array('jquery','gallery-filters-script','lightbox-script'), '1.0', true );
+		}
+
 
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
@@ -42,48 +53,6 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 
 
 
-// Function to load more photos on gallery
-function load_more_photos_from_CPT() {
-	$page = $_POST['page'];
-	$post_nb = $_POST['post_nb'];
-  
-
-	$category_slug = 'mariage';
-	$date_order = 'ASC';
-
-	$more_args = array(
-		'post_type'      => 'fiche_photo',
-		'posts_per_page' => $post_nb,
-		'orderby'   => 'date',
-		'order'   => $date_order,
-		'tax_query' => [
-			[
-				'taxonomy' => 'categorie',
-				'field' => 'slug',
-				'terms' => $category_slug,
-			],
-		], // taxonomies */
-		'paged' => $page,
-	);
-  
-	$more_query = new WP_Query($more_args);
-  
-	if ($more_query->have_posts()) {
-		while ($more_query->have_posts()) : $more_query->the_post();
-			
-			get_template_part('/template-parts/photo-block'); // one photo block build
-
-		endwhile;
-		wp_reset_postdata(); // close current loop
-	} else {
-		echo 'Pas de photos supplémentaires';
-	}
-  
-	wp_die(); // Close correctly Ajax request
-  }
-  
-  add_action('wp_ajax_load_more_photos', 'load_more_photos_from_CPT');
-  add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos_from_CPT');
 
 
   
