@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
 
-        console.log("photos fill:",photos_infos);
+        /*console.log("photos store:",photos_infos);*/
 
     } //end photos_store()
 

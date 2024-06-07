@@ -20,12 +20,27 @@ document.addEventListener('DOMContentLoaded', function() {
         var categorie_button = categorie_filter.querySelector('button.gallery_filter');
         var categorie_dropdown = categorie_filter.querySelector('.gallery_filter_dropdown');
         var categorie_options = Array.from(categorie_filter.querySelectorAll('.gallery_filter_option'));
+        var previous_selected_option; // to store selected filter option
         
 
         /* categorie dropdown */
         categorie_button.addEventListener('focus', () => {
             categorie_dropdown.style.display = 'block';
             categorie_button.classList.add("gallery_filter_focus");
+
+            // set focus to current filter option
+            categorie_options.forEach(option => {
+                if (categorie_button.textContent != "CATÉGORIES") {
+                    if (option.textContent === categorie_button.textContent) {
+                    option.classList.add("gallery_filter_option_focus"); // add class for colored current option
+                    previous_selected_option = option;
+                    }
+                } else { // case of no filter
+                    if (option.textContent === "") {
+                        previous_selected_option = option;
+                    }
+                }
+            });
 
             // format dropdown close
             format_dropdown.style.display = 'none';
@@ -50,12 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 var selectedValue = option.getAttribute('data-value');
                 categorie_filter.setAttribute('data-value', selectedValue);
 
+                previous_selected_option.classList.remove("gallery_filter_option_focus"); // remove class for colored previous option
+
                 // categorie dropdown close
                 categorie_dropdown.style.display = 'none';
                 categorie_button.classList.remove("gallery_filter_focus");
             });
         });
     } //end categorie_filter
+
 
     /* format filter built with ul */
     var format_filter = document.getElementById('gallery_filter_format');
@@ -70,6 +88,20 @@ document.addEventListener('DOMContentLoaded', function() {
             format_dropdown.style.display = 'block';
             format_button.classList.add("gallery_filter_focus");
             
+            // set focus to current filter option
+            format_options.forEach(option => {
+                if (format_button.textContent != "FORMATS") {
+                    if (option.textContent === format_button.textContent) {
+                    option.classList.add("gallery_filter_option_focus"); // add class for colored current option
+                    previous_selected_option = option;
+                    }
+                } else { // case of no filter
+                    if (option.textContent === "") {
+                        previous_selected_option = option;
+                    }
+                }
+            });
+
             // categorie dropdown close
             categorie_dropdown.style.display = 'none';
             categorie_button.classList.remove("gallery_filter_focus");
@@ -93,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 var selectedValue = option.getAttribute('data-value');
                 format_filter.setAttribute('data-value', selectedValue);
 
+                previous_selected_option.classList.remove("gallery_filter_option_focus"); // remove class for colored previous option
+
                 // format dropdown close
                 format_dropdown.style.display = 'none';
                 format_button.classList.remove("gallery_filter_focus");
@@ -100,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     } //end format_filter
+
 
     /* sort filter built with ul */
     var sort_filter = document.getElementById('gallery_filter_sort');
@@ -113,6 +148,20 @@ document.addEventListener('DOMContentLoaded', function() {
         sort_button.addEventListener('focus', () => {
             sort_dropdown.style.display = 'block';
             sort_button.classList.add("gallery_filter_focus");
+
+            // set focus to current filter option
+            sort_options.forEach(option => {
+                if (sort_button.textContent != "TRIER PAR") {
+                    if (option.textContent === sort_button.textContent) {
+                    option.classList.add("gallery_filter_option_focus"); // add class for colored current option
+                    previous_selected_option = option;
+                    }
+                } else { // case of no filter
+                    if (option.textContent === "") {
+                        previous_selected_option = option;
+                    }
+                }
+            });
 
             // categorie dropdown close
             categorie_dropdown.style.display = 'none';
@@ -137,6 +186,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 var selectedValue = option.getAttribute('data-value');
                 sort_filter.setAttribute('data-value', selectedValue);
 
+                previous_selected_option.classList.remove("gallery_filter_option_focus"); // remove class for colored previous option
+
                 // sort dropdown close
                 sort_dropdown.style.display = 'none';
                 sort_button.classList.remove("gallery_filter_focus");
@@ -144,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     } //end sort_filter
 
+    
     /* initial load without filters */
     gallery_ajax_request();
 

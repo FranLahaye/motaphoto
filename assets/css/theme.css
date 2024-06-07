@@ -905,9 +905,11 @@ button.gallery_filter_focus {
 }
 .gallery_filter_option:hover {
     background-color: var(--filter-bg-hover);
+    color: var(--filter-color);
 }
-.gallery_filter_option:focus {
+.gallery_filter_option_focus {
     background-color: var(--filter-bg-selected);
+    color: var(--main-bg-color);
 }
 
 #gallery_filter_sort {
