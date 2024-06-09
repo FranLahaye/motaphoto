@@ -1003,7 +1003,7 @@ button.gallery_filter_focus {
     font-weight: 400;
     line-height: normal;
     color: var(--main-bg-color);
-    background-color: var(--main-color);
+    background-color: transparent;
 }
 
 .lightbox__next {
@@ -1023,7 +1023,7 @@ button.gallery_filter_focus {
     top: 55px;
     right: 52px;
     z-index: 6;
-    background-color: var(--main-color);
+    background-color: transparent;
     opacity: 0.6;
     transition: opacity 0.3s;
 }
