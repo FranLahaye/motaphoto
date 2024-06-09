@@ -82,43 +82,8 @@ get_header(); ?>
 </section>
 
 		<div class="gallery_photos">
-		<?php
-		/*
-				$category_slug = 'mariage';
-				$date_order = 'ASC';
-
-				// request build to get 8 photos with filters selection
-				$gallery_args = array(
-					'post_type'      => 'fiche_photo',
-					'posts_per_page' => 8,
-					'orderby'   => 'date',
-					'order'   => $date_order,
-					'tax_query' => [
-						[
-							'taxonomy' => 'categorie',
-							'field' => 'slug',
-							'terms' => $category_slug,
-						],
-					], 
 			
-				);
-
-				$gallery_query = new WP_Query($gallery_args);
-	
-				// display photos
-				if ( $gallery_query->have_posts() ) {
-					while ( $gallery_query->have_posts() ) {
-						$gallery_query->the_post();
-	
-						get_template_part('/template-parts/photo-block'); // one photo block build
-				
-					}
-				}
-
-				// close current WP loop
-				wp_reset_postdata();
-				*/
-				?>
+			<!-- gallery filled by AJAX requests (see functions.php and gallery java scripts -->
 
 		</div><!-- gallery_photos -->
 

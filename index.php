@@ -12,7 +12,7 @@
 get_header();
 ?>
 
-<p>Current template is "index.php" - Please check site wordpress setup to have some "page.php" template defined</p>
+<p>Current template is "index.php" - Please check site wordpress setup to have the "home.php" template defined</p>
 
 <?php
 get_footer();
